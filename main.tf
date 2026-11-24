@@ -45,4 +45,11 @@ resource "aws_vpc_security_group_egress_rule" "all" {
 resource "aws_instance" "this" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  key_name
+  key_name               = var.key_name
+  vpc_security_group_ids = [aws_security_group.this.id]
+
+  tags = merge(var.tags, {
+    Name = "novasphere-${var.name}"
+    Role = var.name
+  })
+}
