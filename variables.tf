@@ -36,3 +36,9 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "enable_monitoring_port" {
+  description = "Ouvre le port 9100 au CIDR administrateur (v1.1.0)"
+  type        = bool
+  default     = false
+}
